@@ -1,5 +1,6 @@
 package com.example.kata.twitter.configuration
 
+import com.fasterxml.jackson.databind.ObjectMapper
 import com.rabbitmq.client.Channel
 import com.rabbitmq.client.Connection
 import org.slf4j.LoggerFactory
@@ -9,10 +10,11 @@ import javax.annotation.PostConstruct
 
 @Component
 class RabbitMQPublisher(
-    @Value("\${rabbitmq.publish.exchange:twitter-topic}") private val exchange: String,
-    @Value("\${rabbitmq.publish.routingKey:twitter-topics}") private val routingKey: String,
-    private val connection: Connection
-) {
+        @Value("\${rabbitmq.publish.exchange:twitter-topic}") private val exchange: String,
+        @Value("\${rabbitmq.publish.routingKey:twitter-topics}") private val routingKey: String,
+        private val connection: Connection,
+        private val objectMapper: ObjectMapper,
+        ) {
     private val logger = LoggerFactory.getLogger(this::class.java)
     lateinit var channel: Channel
     @PostConstruct
@@ -23,6 +25,6 @@ class RabbitMQPublisher(
 
     fun publish(message: Any){
         logger.info("Publishing message $message")
-        channel.basicPublish(exchange, routingKey, null, message.toString().toByteArray())
+        channel.basicPublish(exchange, routingKey, null, objectMapper.writeValueAsBytes(message))
     }
 }
