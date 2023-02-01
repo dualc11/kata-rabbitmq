@@ -11,5 +11,25 @@ The goal of this repo is to be an introduction to rabbitmq with spring-boot.
 - **Binding** - binding is a virtual link between an exchange and a queue within the broker. When publishing a message to an exchange, applications use a routing-key attribute. **When a message is evaluated by an exchange to determine the appropriate queues it should be routed to, the message’s routing key is evaluated against the binding key.**
 
 
-## Layout
-- Checkout 
+## Prerequisites
+- Twitter account
+- JVM 11
+
+## Kata agenda
+### Part I - Connect to twitter API
+- Checkout the `kata-season` branch. There you will find everything you need to start the kata.
+- Go to https://developer.twitter.com/en/portal/dashboard to generate API tokens.
+- Create a TwitterWebClientConfiguration
+- Create a JacksonConfiguration
+- Create TwitterGateway
+- Create TweetController
+- Make a request to `GET - http://localhost:8080/subscribe/topic/cristiano`
+
+### Part II - Create a rabbit producer
+- Add rabbit to the docker-compose.yml
+- Create a rabbit configuration, where you define the connection factory, connection and channel
+- Create rabbit consumer using previously define rabbit configuration
+- Using the twitter information, publish some messages
+### Part III - Create a rabbit consumer
+- Create a rabbit consumer
+- Consume the messages published the previously created producer
