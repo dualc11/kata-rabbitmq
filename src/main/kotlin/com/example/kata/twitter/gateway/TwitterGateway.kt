@@ -10,9 +10,7 @@ class TwitterGateway(
         private val webClient: WebClient
 ) {
 
-    fun getTweet(topic: String): SearchResult = webClient
-            .get()
-            .uri("/tweets/search/recent?query=$topic")
-            .exchangeToMono{res -> res.bodyToMono<SearchResult>() }
-            .block()!!
+    fun getTweet(topic: String): SearchResult {
+
+    }
 }
