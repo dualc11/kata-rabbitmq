@@ -11,18 +11,19 @@ import org.springframework.http.codec.json.Jackson2JsonDecoder
 
 @Configuration
 class JacksonConfiguration {
-
-    val jacksonObjectMapper = jacksonObjectMapper().apply {
-        propertyNamingStrategy = PropertyNamingStrategies.SNAKE_CASE
-        configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
-        configure(DeserializationFeature.USE_LONG_FOR_INTS, true)
-    }
+    val jacksonObjectMapper =
+        jacksonObjectMapper().apply {
+            propertyNamingStrategy = PropertyNamingStrategies.SNAKE_CASE
+            configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
+            configure(DeserializationFeature.USE_LONG_FOR_INTS, true)
+        }
 
     @Bean
     @Primary
-    fun jackson2JsonDecoder() = Jackson2JsonDecoder(
-          jacksonObjectMapper
-    )
+    fun jackson2JsonDecoder() =
+        Jackson2JsonDecoder(
+            jacksonObjectMapper,
+        )
 
     @Bean
     fun customJacksonObjectMapper(): ObjectMapper = jacksonObjectMapper

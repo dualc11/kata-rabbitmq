@@ -9,14 +9,13 @@ import org.springframework.web.reactive.function.client.toEntity
 @Service
 class IPMAGateway(
     @Qualifier("ipma-web-client")
-    private val webClient: WebClient
-) : WeatherPredicton {
-    override fun getWeatherPrediction(locationId: String): WeatherData = webClient
-        .get()
-        .uri("open-data/forecast/meteorology/cities/daily/${locationId}.json")
-        .exchangeToMono { res -> res.toEntity<WeatherData>() }
-        .block()!!
-        .body!!
-
-
+    private val webClient: WebClient,
+) : WeatherPrediction {
+    override fun getWeatherPrediction(locationId: String): WeatherData =
+        webClient
+            .get()
+            .uri("open-data/forecast/meteorology/cities/daily/$locationId.json")
+            .exchangeToMono { res -> res.toEntity<WeatherData>() }
+            .block()!!
+            .body!!
 }

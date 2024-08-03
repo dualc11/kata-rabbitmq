@@ -2,6 +2,6 @@ package com.example.kata.twitter.gateway
 
 import com.example.kata.twitter.model.WeatherData
 
-interface WeatherPredicton {
+interface WeatherPrediction {
     fun getWeatherPrediction(locationId: String): WeatherData
 }

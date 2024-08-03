@@ -12,12 +12,11 @@ class WeatherForecastHandler {
     private val logger = LoggerFactory.getLogger(this::class.java)
 
     @Bean
-    fun handler(objectMapper: ObjectMapper) = handlerFor<WeatherData>(objectMapper){
-
-        val sleepingTime = Random.nextLong(1000, 10000)
-        logger.info("Processing event $it... $sleepingTime")
-        Thread.sleep(sleepingTime)
-        logger.info("Handling successful")
-
-    }
+    fun handler(objectMapper: ObjectMapper) =
+        handlerFor<WeatherData>(objectMapper) {
+            val sleepingTime = Random.nextLong(1000, 10000)
+            logger.info("Processing event $it... $sleepingTime")
+            Thread.sleep(sleepingTime)
+            logger.info("Handling successful")
+        }
 }

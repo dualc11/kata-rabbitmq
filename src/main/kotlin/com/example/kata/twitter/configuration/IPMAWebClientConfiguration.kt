@@ -8,9 +8,8 @@ import org.springframework.web.reactive.function.client.WebClient
 
 @Configuration
 class IPMAWebClientConfiguration(
-    private val jackson2JsonDecoder: Jackson2JsonDecoder
+    private val jackson2JsonDecoder: Jackson2JsonDecoder,
 ) {
-
     @Bean("ipma-web-client")
     fun twitterWebClient(): WebClient =
         WebClient.builder()
@@ -21,7 +20,7 @@ class IPMAWebClientConfiguration(
                     .codecs { configure ->
                         configure.defaultCodecs().jackson2JsonDecoder(jackson2JsonDecoder)
                     }
-                    .build()
+                    .build(),
             )
             .build()
 }

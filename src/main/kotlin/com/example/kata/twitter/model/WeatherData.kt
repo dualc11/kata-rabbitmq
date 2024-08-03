@@ -7,7 +7,7 @@ data class WeatherData(
     @JsonProperty("country") val country: String,
     @JsonProperty("data") val data: List<WeatherDetail>,
     @JsonProperty("globalIdLocal") val globalIdLocal: Int,
-    @JsonProperty("dataUpdate") val dataUpdate: String
+    @JsonProperty("dataUpdate") val dataUpdate: String,
 )
 
 data class WeatherDetail(
@@ -20,5 +20,5 @@ data class WeatherDetail(
     @JsonProperty("longitude") val longitude: String,
     @JsonProperty("forecastDate") val forecastDate: String,
     @JsonProperty("latitude") val latitude: String,
-    @JsonProperty("classPrecInt") val classPrecInt: Int? = null // Optional field
+    @JsonProperty("classPrecInt") val classPrecInt: Int? = null,
 )
