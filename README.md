@@ -1,6 +1,16 @@
-#Rabbitmq Kata season
+# Rabbitmq Kata season
 The goal of this repo is to be an introduction to rabbitmq with spring-boot.
 
+<!-- TOC -->
+* [Rabbitmq Kata season](#rabbitmq-kata-season)
+  * [Rabbitmq core concepts](#rabbitmq-core-concepts-)
+  * [Prerequisites](#prerequisites)
+  * [Kata agenda](#kata-agenda)
+    * [Part I - Connect to twitter API](#part-i---connect-to-twitter-api)
+    * [Part II - Create a rabbit producer](#part-ii---create-a-rabbit-producer)
+    * [Part III - Create a rabbit consumer](#part-iii---create-a-rabbit-consumer)
+  * [Development](#development)
+<!-- TOC -->
 
 ## Rabbitmq core concepts 
 - **What is rabbitMQ?** RabbitMQ is a message-queueing software also known as a message broker or queue manager.
@@ -35,3 +45,9 @@ The goal of this repo is to be an introduction to rabbitmq with spring-boot.
 - Define a queue to each the consumer will consume the events
 - Create a rabbit consumer
 - Consume the messages published the previously created producer
+
+## Development
+- Start rabbitmq `docker-compose up`
+- Run linter with:
+  - `make lint`
+  - `make format`
