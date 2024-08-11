@@ -22,7 +22,10 @@ class SubscribeController(
     ): ResponseEntity<WeatherData> {
         logger.info("Subscribe to topic $locationId")
 
-        val res = ipmaGateway.getWeatherPrediction(locationId)
+        val res =
+            ipmaGateway
+                .getWeatherPrediction(locationId)
+                .block()!!
 
         rabbitMQPublisher.publish(message = res)
         return ResponseEntity.ok().body(res)

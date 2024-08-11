@@ -21,7 +21,11 @@ java {
 }
 ext {
 	rabbitmqClient = '5.16.0'
+	mockkVersion = "1.13.8"
+	mockkSpringVersion = "4.0.2"
+	okhttpVersion = "4.10.0"
 }
+
 
 repositories {
 	mavenCentral()
@@ -35,7 +39,11 @@ dependencies {
 	implementation 'org.jetbrains.kotlin:kotlin-reflect'
 	implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-
+	testImplementation "io.mockk:mockk:${mockkVersion}"
+	testImplementation "com.ninja-squad:springmockk:${mockkSpringVersion}"
+	testImplementation "com.squareup.okhttp3:okhttp:${okhttpVersion}"
+	testImplementation "com.squareup.okhttp3:mockwebserver:${okhttpVersion}"
+	testImplementation "io.projectreactor:reactor-test"
 }
 
 
