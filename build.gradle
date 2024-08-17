@@ -21,7 +21,7 @@ java {
 }
 ext {
 	rabbitmqClient = '5.16.0'
-	mockkVersion = "1.13.8"
+	mockkVersion = "1.13.12"
 	mockkSpringVersion = "4.0.2"
 	okhttpVersion = "4.10.0"
 }
@@ -38,6 +38,7 @@ dependencies {
 	implementation 'com.fasterxml.jackson.module:jackson-module-kotlin'
 	implementation 'org.jetbrains.kotlin:kotlin-reflect'
 	implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
+	implementation 'io.github.oshai:kotlin-logging-jvm:7.0.0'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation "io.mockk:mockk:${mockkVersion}"
 	testImplementation "com.ninja-squad:springmockk:${mockkSpringVersion}"

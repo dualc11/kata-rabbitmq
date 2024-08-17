@@ -1,5 +1,6 @@
-package com.example.kata.twitter.gateway
+package com.example.kata.twitter.integration.gateway
 
+import com.example.kata.twitter.gateway.IPMAGateway
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
 import org.assertj.core.api.Assertions.assertThat
@@ -109,8 +110,6 @@ class IPMAGatewayTest {
               "dataUpdate": "2024-07-28T15:31:02"
             }
             """.trimIndent()
-
-        // val res = subject.getWeatherPrediction(locationId.toString())
 
         mockWebServer.enqueue(
             MockResponse()
