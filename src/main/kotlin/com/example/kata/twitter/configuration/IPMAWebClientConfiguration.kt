@@ -22,7 +22,9 @@ class IPMAWebClientConfiguration(
                 ExchangeStrategies
                     .builder()
                     .codecs { configure ->
-                        configure.defaultCodecs().jackson2JsonDecoder(jackson2JsonDecoder)
+                        configure.defaultCodecs()
+                            .apply { maxInMemorySize(1000 * 1024) } // TODO Another way to get this information?
+                            .jackson2JsonDecoder(jackson2JsonDecoder)
                     }
                     .build(),
             )

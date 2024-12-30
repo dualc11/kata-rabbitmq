@@ -1,5 +1,6 @@
 package com.example.kata.twitter
 
+import com.example.kata.twitter.gateway.WeatherObservation
 import com.example.kata.twitter.gateway.WeatherPrediction
 import com.example.kata.twitter.helper.weatherData
 import com.example.kata.twitter.service.WeatherForecastService
@@ -13,9 +14,11 @@ import reactor.core.publisher.Mono
 
 class WeatherForecastServiceTest {
     private val weatherPrediction: WeatherPrediction = mockk()
+    private val weatherObservation: WeatherObservation = mockk()
     private val subject =
         WeatherForecastService(
             weatherPrediction = weatherPrediction,
+            weatherObservation = weatherObservation,
         )
 
     @Nested
