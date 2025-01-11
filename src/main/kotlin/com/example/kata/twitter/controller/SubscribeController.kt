@@ -1,6 +1,7 @@
 package com.example.kata.twitter.controller
 
 import com.example.kata.twitter.configuration.RabbitMQPublisher
+import com.example.kata.twitter.model.MeteorologicData
 import com.example.kata.twitter.model.WeatherData
 import com.example.kata.twitter.service.WeatherForecastService
 import io.github.oshai.kotlinlogging.KotlinLogging
@@ -8,6 +9,8 @@ import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
+import reactor.core.publisher.Flux
+import java.time.LocalDateTime
 
 @Controller
 class SubscribeController(
@@ -34,13 +37,13 @@ class SubscribeController(
     @GetMapping("/observation/{observationId}")
     fun observation(
         @PathVariable observationId: String,
-    ): ResponseEntity<String> {
+    ): ResponseEntity<Flux<Map<LocalDateTime?, Map<String, MeteorologicData?>>?>> {
         logger.info { "Getting observation $observationId" }
 
         val res =
             weatherForecastService
                 .getObservation(observationId)
         // rabbitMQPublisher.publish(message = res)
-        return ResponseEntity.ok().body(res)
+        return ResponseEntity.ok().body(res.flux())
     }
 }

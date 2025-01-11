@@ -23,7 +23,7 @@ class IPMAWebClientConfiguration(
                     .builder()
                     .codecs { configure ->
                         configure.defaultCodecs()
-                            .apply { maxInMemorySize(1000 * 1024) } // TODO Another way to get this information?
+                            .apply { maxInMemorySize(16 * 1024 * 1024) } // TODO Another way to get this information?
                             .jackson2JsonDecoder(jackson2JsonDecoder)
                     }
                     .build(),
